@@ -16,11 +16,13 @@ private:
     char id;
 	static char aux;
 	int moedas;
+	bool Comando; // ataca ou recolhe -true (ataca) e -false(recolhe)
 	Castelo *castelo;
     vector <Perfil *> perfis;
     vector <Ser *> seres;
     vector <Edificio *> edificos;
 
+//	bool ataca; passar para o castelo
 public:
     Colonia(Castelo *c);
 	bool AddPerfil(Perfil *p);
@@ -35,9 +37,9 @@ public:
 	void infoColonia();
 	int posPerfil(char perfil);
 	Edificio * getCast();
-	bool getOrdem();
-	void setOrdem(bool ordem);
-	vector <Ser*> getSeresCastelo();
+
+	bool getComando();
+	void setComando(bool n);
 	
 };
 

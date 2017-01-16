@@ -1,4 +1,4 @@
-#include "Edificio.h"
+	#include "Edificio.h"
 
 Edificio::Edificio(int custo, int saude, int def): custo(custo),saude(saude),defesa(def) {
 	this->id = aux;
@@ -30,10 +30,6 @@ void Edificio::setPosEdificio(int col, int lin)
 int * Edificio::getPosEdificio()
 {
 	return this->posicao;
-}
-string Edificio::getTipoEd()
-{
-	return "Edificio";
 }
 
 

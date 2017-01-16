@@ -5,6 +5,10 @@ Castelo::Castelo() {
 	this->saude = 50;
 	this->defesa = 10;
 }
+char Castelo::getIdColonia()
+{
+	return this->id_col;
+}
 /*void Castelo::InfoEdificio(ostringstream  & os) {
 
 	os.str("");
@@ -44,10 +48,26 @@ bool Castelo::addSer(Ser * s)
 	edSeres.push_back(aux);
 	return true;
 }
+//->
+bool Castelo::removeSer(int i)
+{
+	if (edSeres.size() < i) {
+		edSeres.erase(edSeres.begin() + i);
+		return true;
+	}	
+	else	
+		return false;
+}
 vector<Ser*> Castelo::retornaSeres()
 {
 	return this->edSeres;
 }
+//->
+Ser * Castelo::getSerEspecifico(int i)
+{
+	return this->edSeres[i];
+}
+
 void Castelo::setOrdem(bool ordem)
 {
 	this->ordem = ordem;
@@ -55,4 +75,9 @@ void Castelo::setOrdem(bool ordem)
 bool Castelo::getOrdem()
 {
 	return this->ordem;
+}
+
+int Castelo::NumSeres()
+{
+	return this->edSeres.size();
 }

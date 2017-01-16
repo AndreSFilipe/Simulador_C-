@@ -10,7 +10,7 @@
 #include <ctime>
 
 
-//F
+
 void desenharCaixa(int x, int y, int dimX, int dimY) {
 	for (int i = 0; i < dimY; i++) {
 		Consola::gotoxy(x, y + i);			cout << (char)186; // linha da esquerda
@@ -143,7 +143,6 @@ int main() {
 			c.loadFile(segunda);
 		else
 			c.processaComando(primeira, segunda, terceira, quarta);
-		
 
 	} while (c.getInicio() == false);
 
@@ -176,9 +175,6 @@ int main() {
 	}
 
 	Simulacao sim(mapa, colonias);
-
-
-
 
 	Consola::setTextSize(12,12);
 

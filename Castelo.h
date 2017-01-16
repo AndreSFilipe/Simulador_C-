@@ -24,9 +24,12 @@ public:
 	void setPosEdificio(int col, int lin);
 	int* getPosEdificio();
 	bool addSer(Ser *s);
+	bool removeSer(int i);
 	vector<Ser*> retornaSeres();
+	Ser * getSerEspecifico(int i);
 	void setOrdem(bool ordem);
 	bool getOrdem();
+	int NumSeres();
 
 };
 

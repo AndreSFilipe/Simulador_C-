@@ -52,7 +52,6 @@ public:
 	//virtual void infoCaracteristica(ostringstream & os);
 	int getDef();
 };
-
 class Faca : public Caracteristica {
 	int upAtk;
 public:
@@ -102,5 +101,15 @@ public:
 	void setCusto(int _c);
 	vector<string> getCar();
 	void infoPerfil() const;
+	
+	//funcao de percorrer caracteristicas de upgrade
+
+	//funcao de percorrer caracteristica de ação
+
+	//funcoes da espada
+	int verificEspada(); // fazer funcoes para as outras caracteristicas
+	bool VerificanumAtk();
+	bool ReloadEspada();
+
 };
 #endif

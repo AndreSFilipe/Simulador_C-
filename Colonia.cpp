@@ -3,6 +3,7 @@
 Colonia::Colonia(Castelo *c) : castelo(c){
 	id = aux;
 	aux++;
+	this->Comando = false;
 	
 }
 char Colonia::aux = 'A';
@@ -103,17 +104,13 @@ Edificio * Colonia::getCast()
 	return edificos[0];
 }
 
-bool Colonia::getOrdem()
+bool Colonia::getComando()
 {
-	return this->castelo->getOrdem();
+	return this->Comando;
 }
 
-void Colonia::setOrdem(bool ordem)
+void Colonia::setComando(bool n)
 {
-	this->castelo->setOrdem(ordem);
+	this->Comando = n;
 }
 
-vector<Ser*> Colonia::getSeresCastelo()
-{
-	return this->castelo->retornaSeres();
-}

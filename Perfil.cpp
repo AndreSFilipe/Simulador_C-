@@ -65,6 +65,25 @@ void Perfil::infoPerfil() const{
 	}
 }
 
+/*int Perfil::verificEspada(){
+	int espada = 0;
+	for (int i = 0; i < caracteristicas.size(); i++)
+		if (caracteristicas[i]->getNome == "Espada")
+			espada = i;
+
+	if (espada == 1)
+		return espada;
+	else
+		return 0;
+}
+
+/*bool Perfil::VerificanumAtk(){
+	int espada = verificEspada();
+	if (espada != 0) {
+		caracteristicas[espada]->
+	}
+}*/
+
 
 
 Caracteristica::Caracteristica(string _nome, int _id,int _custo, int _forca) 

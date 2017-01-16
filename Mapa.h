@@ -33,15 +33,23 @@ public:
 	bool SetMapaSer(int _x, int _y, Ser *s);
 	bool SetMapaEdificio(int _x, int _y, Edificio * e);
 	bool SetMapaCastelo(int _x, int _y, Castelo * c);
-	void CarregaMapa();
+	void RetiraSeresDoCastelo();
+	int verificaPosVolta(int col, int lin);
+	void MoveSeres();
+	void AtualizaPosicoesMapa();
 	void preencheMapaEcrajogo(int x, int y);
-	int PosCoord_X(int pos);
-	int PosCoord_Y(int pos);
-	int CoordPos(int _x,int _y);
-	void InfoMapa();
-	vector <vector <Identificador_Mapa*> > retornaVectoresMapa();
-	vector <vector <Identificador_Mapa*> > mudaPosicoesSeresemCampo();
-	void colocaSeresemCampo(vector<Ser*> Saux);
+	int distancia(int x, int y, int _x, int _y); // x e y da posicao do ser e _x e _y coord do outro objecto
+	int ProcuraEdInimigos(int x, int y);
+	int ProcuraSerInimigos(int x, int y);
+	int calcula_direcaoMove(int x, int y, int _x, int _y); // variaveis iguais a funcao distancia
+	//int PosCoord_X(int pos);
+	//int PosCoord_Y(int pos);
+	//int CoordPos(int _x,int _y);
+	//void InfoMapa();
+
+
+	//vector <vector <Identificador_Mapa*> > retornaVectoresMapa();
+	//vector <vector <Identificador_Mapa*> > mudaPosicoesSeresemCampo(bool ataca);
 };
 
 #endif

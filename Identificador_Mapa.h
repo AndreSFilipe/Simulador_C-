@@ -18,7 +18,7 @@ class Identificador_Mapa {
 	Ser * ser_pos;
 	char colonia; // para sabermos a cor
 	Edificio * edificio_pos;
-	string edificio; // para sabermos que tipo de edificio
+	
 public:
 	Identificador_Mapa(int linhas, int colunas);
 	bool addSer(Ser * s); //estas funcoes têm que receber de que colonia são
@@ -26,10 +26,16 @@ public:
 	bool addCastelo(Castelo *c);
 	Ser* getSer();
 	Edificio* getEdificio();
-	bool verificaOcupado();
-	bool setSer(Ser *s);
+	bool verificaSer(); 
+	bool verificaCasetelo(); //
+	bool verificaEdificio(); //
+	bool PremissaoParaMover(); //
+	bool RetiraCastelo(int i); //
+	bool RetiraSerDoMapa(); //
+	int retornaNumSeres(); //
+	Ser * getSerDoCastelo(int i); //
+	void atualizaPosSer(int x, int y);
 	void imprime();
-	string getTipoEdificio();
 
 };
 #endif

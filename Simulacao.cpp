@@ -31,14 +31,13 @@ void Simulacao::processaComando(string primeira, string segunda, string terceira
 				const int nr = stoi(segunda);
 				const char *perfil = terceira.c_str();
 				incubadora(nr, *perfil);
-			} else
+			}else 
 				if (primeira == "ataca") {
-					colonias[0]->setOrdem(true);
+					colonias[0]->setComando(true);
 				} else
 					if (primeira == "recolhe") {
-						colonias[0]->setOrdem(false);
+						colonias[0]->setComando(false);
 					}
-
 }
 
 void Simulacao::incubadora(int nr,char perfil){
@@ -49,23 +48,24 @@ void Simulacao::incubadora(int nr,char perfil){
 }
 
 void Simulacao::movimentodeSeres() {
-	// fazer as caracteristicas actuar?
+	//bool ataca = this->colonias[0]->getAtaca();mudou para o Castelo
 
-	vector <Ser*> Saux;
-
-	if (colonias[0]->getOrdem() == true							// ataca == sair do castelo
-		&& colonias[0]->getSeresCastelo().empty() == false) {	// há seres no castelo.
-		Saux = colonias[0]->getSeresCastelo();
-		m->colocaSeresemCampo(Saux); // retornar seres para o vector na colonia
-	} 
-
-
-	m->mudaPosicoesSeresemCampo();
-
-	//ataque aqui. dá dano
-	//se uma criatura morrer, guardamos o seu id e eliminamos do mapa no fim dos for's
-
-
+	//Comando da colonia ataque e recolhe apenas muda a boleano Comando
+	//funcao chamada nos turnos
+	for (int i = 0; i < colonias.size(); i++) {
+		bool acao = colonias[i]->getComando();
+		if (acao == true) {
+			//ataca (1 move seres depois e que retira)
+			m->MoveSeres();
+			m->RetiraSeresDoCastelo();
+		}
+			
+		if (acao == false) {
+			//recolhe
+		}
+			
+	}
+	//m->mudaPosicoesSeresemCampo(ataca);
 }
 
 int Simulacao::getfocoX()

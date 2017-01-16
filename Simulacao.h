@@ -22,8 +22,6 @@ public:
 	void imprimeEdificios();
 	void incubadora(int nr, char perfil);
 	void movimentodeSeres();
-	void moveSeres();
-	void atualizaPos();
 	int getfocoX();
 	int getfocoY();
 

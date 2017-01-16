@@ -25,7 +25,6 @@ public:
 	void SetIdentificaCol(char id);
 	void setPosEdificio(int col, int lin);
 	int* getPosEdificio();
-	string getTipoEd();
 
 };
 

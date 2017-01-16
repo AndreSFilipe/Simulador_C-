@@ -6,7 +6,7 @@ Ser::Ser(Perfil * p) : perf(p){
 	this->forca = p->getForca(); // capacidade de ter inumeras caracteristicas
 	this->custo = p->getCusto(); // deixar apenas o custo no perfil ?
 	//carregar novas caracteristas apartir do perfil
-	this->saude += 10;
+	this->saude = 10;
 	this->ataque = 0;
 	this->defesa = 0;
 	this->velocidade = 0;
@@ -49,6 +49,10 @@ void Ser::mostraSerInfo(ostringstream & os) const{
 	cout << os.str();
 	perf->infoPerfil();
 }
+void Ser::setVelocidade(int velocidade)
+{
+	this->velocidade += velocidade;
+}
 int Ser::getVelocidade()
 {
 	return this->velocidade;
@@ -61,83 +65,83 @@ void Ser::setIDCol(int n)
 {
 	this->id_col = n;
 }
-int* Ser::moveSer(int velocidade, int posicao[], int limites[], vector<int> posOcupadas) {  
+void Ser::setAtaque(int atk)
+{
+	this->ataque += atk;
+}
+int Ser::getAtaque()
+{
+	return this->ataque;
+}
+
+int* Ser::moveSer(int velocidade, int posicao[], int limites[]) {  
 													// col = posicao[0] = x
 													// lin = posicao[1] = y
 	bool repete; //para validar o movimento
-	bool passou = false;
 
-	for (int i = 0; i < velocidade; i++) {
+	for (int i = 0; i < velocidade; i++) {	
 		do {
-			do {
-				int new_pos = rand() % 8;
-				repete = false;
-				switch (new_pos) {
-				case 0: // CIMA
-					if (posicao[1] == 0) //y == 0
-						repete = true;
-					else
-						posicao[1]++;
+			int new_pos = rand() % 8;
+			repete = false;
+			switch (new_pos) {
+			case 0: // CIMA
+				if (posicao[1] == 0) //y == 0
+					repete = true;
+				else
+					posicao[1]++;
 
-				case 1: // CIMA DIREITA
-					if (posicao[0] == limites[0] && posicao[1] == 0) // x == maxX && y == 0
-						repete = true;
-					else {
-						posicao[0]++; // x++
-						posicao[1]++;
-					}
-				case 2: // DIREITA
-					if (posicao[0] == limites[0]) // x == maxX
-						repete = true;
-					else
-						posicao[0]++;
-
-				case 3: // BAIXO DIREITA
-					if (posicao[0] == limites[0] && posicao[1] == limites[1]) // x = maxX && y = maxY
-						repete = true;
-					else {
-						posicao[0]++;
-						posicao[1]--; // y--
-					}
-				case 4: // BAIXO
-					if (posicao[1] == limites[1]) // y == maxY
-						repete = true;
-					else
-						posicao[1]--;
-
-				case 5: // BAIXO ESQUERDA
-					if (posicao[0] == 0 && posicao[1] == limites[1]) // x == 0 && y == maxY
-						repete = true;
-					else {
-						posicao[0]--;
-						posicao[1]--;
-					}
-
-				case 6: // ESQUERDA
-					if (posicao[0] == 0) // x == 0
-						repete = true;
-					else
-						posicao[0]--;
-
-				case 7: // CIMA ESQUERDA
-					if (posicao[0] == 0 && posicao[1] == 0) // x == 0 && y == 0
-						repete = true;
-					else {
-						posicao[0]--; //x--
-						posicao[1]++;
-					}
-
-				default:
-					break;
+			case 1: // CIMA DIREITA
+				if (posicao[0] == limites[0] && posicao[1] == 0) // x == maxX && y == 0
+					repete = true;
+				else {
+					posicao[0]++; // x++
+					posicao[1]++;
 				}
-			} while (repete == true);
+			case 2: // DIREITA
+				if (posicao[0] == limites[0]) // x == maxX
+					repete = true;
+				else
+					posicao[0]++;
 
-			passou = true; // nada indica que esteja ocupado
-			for (int j = 0; j < sizeof(posOcupadas); j = j + 2)
-				if (posOcupadas[j] == posicao[0] && posOcupadas[j + 1] == posicao[1])
-					passou = false; // a posicao está ocupada e vai procurar uma nova
+			case 3: // BAIXO DIREITA
+				if (posicao[0] == limites[0] && posicao[1] == limites[1]) // x = maxX && y = maxY
+					repete = true;
+				else {
+					posicao[0]++;
+					posicao[1]--; // y--
+				}
+			case 4: // BAIXO
+				if (posicao[1] == limites[1]) // y == maxY
+					repete = true;
+				else
+					posicao[1]--;
 
-		} while (passou == false);
+			case 5: // BAIXO ESQUERDA
+				if (posicao[0] == 0 && posicao[1] == limites[1]) // x == 0 && y == maxY
+					repete = true;
+				else {
+					posicao[0]--;
+					posicao[1]--;
+				}
+
+			case 6: // ESQUERDA
+				if (posicao[0] == 0) // x == 0
+					repete = true;
+				else
+					posicao[0]--;
+
+			case 7: // CIMA ESQUERDA
+				if (posicao[0] == 0 && posicao[1] == 0) // x == 0 && y == 0
+					repete = true;
+				else {
+					posicao[0]--; //x--
+					posicao[1]++;
+				}
+
+			default:
+				break;
+			}
+		} while (repete == true);
 	}
 
 	return posicao;
