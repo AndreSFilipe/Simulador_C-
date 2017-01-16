@@ -1,0 +1,6 @@
+dim 40 20
+oponentes 3
+mkperfil a
+mkperfil b
+castelo a 0 0
+inicio
